@@ -18,5 +18,6 @@ int main(int argc, char *argv[]){
   sigma_2 = estimate_variance(X);
   cout << mu[0] << " " << mu[1] << endl;
   cout << sigma_2[0] << " " << sigma_2[1] << endl;
+  Eigen::VectorXd test = Eigen::Map<Eigen::VectorXd, Eigen::Unaligned>(X.data(), X.size());
   return 0;
 }

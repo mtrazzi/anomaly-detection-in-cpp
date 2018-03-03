@@ -8,6 +8,7 @@
 #include <fstream>
 #include <numeric>
 #include <tgmath.h>
+#include <Eigen/Core>
 
 std::vector< std::vector<double> > getMatrix(std::istream& str);
 std::vector<double> estimate_mean(std::vector< std::vector<double > >X);
