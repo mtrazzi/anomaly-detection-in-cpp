@@ -1,8 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <fstream>
+#include "header.hpp"
 
 std::vector<double> getNextLine(std::istream& str){
   std::vector<double>  result;
@@ -27,17 +23,4 @@ std::vector< std::vector<double> > getMatrix(std::istream& str){
     row = getNextLine(str);
   }
   return X;
-}
-
-int main(int argc, char *argv[]){
-  std::cout.precision(16);
-  if (argc != 2)
-    return -1;
-  std::ifstream   file(argv[1]);
-  std::vector< std::vector<double> > X;
-
-  X = getMatrix(file);
-  for (auto const& row: X)
-    std::cout << row[0] << " " << row[1] << std::endl;
-  return 0;
 }
