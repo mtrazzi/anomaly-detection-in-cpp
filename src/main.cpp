@@ -9,9 +9,17 @@ int main(int argc, char *argv[]){
   Eigen::MatrixXd pval;
   Eigen::MatrixXd anomaly;
 
-  std::ifstream   file("../data/X.csv");
-  std::ifstream   file2("../data/Xval.csv");
-  std::ifstream   file3("../data/yval.csv");
+  if (argc != 2)
+  {
+    cout << "usage: ./threshold dataset{1|2}" << endl;
+    return 0;
+  } 
+  string  dataset = argv[1];
+  string  directory = "../data/" + dataset;
+  
+  std::ifstream   file(directory +  "/X.csv");
+  std::ifstream   file2(directory + "/Xval.csv");
+  std::ifstream   file3(directory + "/yval.csv");
 
   X = convertVectorToEigen(getMatrix(file));
   Xval = convertVectorToEigen(getMatrix(file2));
@@ -19,6 +27,6 @@ int main(int argc, char *argv[]){
 
   pval = probaDistribution(Xval, CovarianceMatrix(X), estimate_mean(X));
   double epsilon = selectBestThreshold(pval, yval, 1000);
-  cout << endl << "BEST_THRESHOLD:" << endl << epsilon << endl;
+  cout << "BEST_THRESHOLD:" << endl << epsilon << endl;
   return 0;
 }
