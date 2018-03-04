@@ -6,6 +6,7 @@ int main(int argc, char *argv[]){
   Eigen::MatrixXd X;
   Eigen::MatrixXd Xval;
   Eigen::MatrixXd yval;
+  Eigen::MatrixXd p;
   Eigen::MatrixXd pval;
   Eigen::MatrixXd anomaly;
 
@@ -26,7 +27,9 @@ int main(int argc, char *argv[]){
   yval = convertVectorToEigen(getMatrix(file3));
 
   pval = probaDistribution(Xval, CovarianceMatrix(X), estimate_mean(X));
-  double epsilon = selectBestThreshold(pval, yval, 1000);
-  cout << "BEST_THRESHOLD:" << endl << epsilon << endl;
+  double threshold = selectBestThreshold(pval, yval, 1000);
+  cout << "BEST_THRESHOLD:" << endl << threshold << endl << endl;
+  p = probaDistribution(X, CovarianceMatrix(X), estimate_mean(X));
+  printListAnomalies(p, threshold);
   return 0;
 }

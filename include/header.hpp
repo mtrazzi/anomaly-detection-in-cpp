@@ -11,6 +11,7 @@
 #include <Eigen/Core>
 #include <Eigen/LU>
 #include <map>
+#include <stdio.h>
 
 std::vector< std::vector<double> > getMatrix(std::istream& str);
 Eigen::MatrixXd estimate_mean(Eigen::MatrixXd X);
@@ -26,5 +27,6 @@ Eigen::MatrixXd classifyAnomaly(const Eigen::MatrixXd p, double epsilon);
 double  calcF1Score(const Eigen::MatrixXd anomaly,
                     const Eigen::MatrixXd cross_val);
 double  selectBestThreshold(Eigen::MatrixXd p, Eigen::MatrixXd labels, int nbTestedValues);
+void  printListAnomalies(const Eigen::MatrixXd p, double threshold);
 
 #endif
