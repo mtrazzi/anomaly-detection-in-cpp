@@ -33,9 +33,6 @@ double  calcF1Score(const Eigen::MatrixXd anomaly,
     else if (anomaly(i) == 0 && labels(i) == 1)
       fals_neg += 1;
   }
-  cout << "true_pos: " << true_pos << endl;
-  cout << "fals_pos: " << fals_pos << endl;
-  cout << "fals_neg: " << fals_neg << endl;
   prec = (double)true_pos / (double)(true_pos + fals_pos);
   recall = (double)true_pos / (double)(true_pos + fals_neg);
   return (2*prec*recall) / (prec + recall);

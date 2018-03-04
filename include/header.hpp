@@ -25,5 +25,6 @@ Eigen::MatrixXd   probaDistribution(const Eigen::MatrixXd mat,
 Eigen::MatrixXd classifyAnomaly(const Eigen::MatrixXd p, double epsilon);
 double  calcF1Score(const Eigen::MatrixXd anomaly,
                     const Eigen::MatrixXd cross_val);
+double  selectBestThreshold(Eigen::MatrixXd p, Eigen::MatrixXd labels, int nbTestedValues);
 
 #endif

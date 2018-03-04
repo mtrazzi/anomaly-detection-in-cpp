@@ -18,8 +18,7 @@ int main(int argc, char *argv[]){
   yval = convertVectorToEigen(getMatrix(file3));
 
   pval = probaDistribution(Xval, CovarianceMatrix(X), estimate_mean(X));
-  anomaly = classifyAnomaly(pval, 0.001);
-  double result = calcF1Score(anomaly, yval);
-  cout << endl << "RESULT:" << endl << result << endl;
+  double epsilon = selectBestThreshold(pval, yval, 1000);
+  cout << endl << "BEST_THRESHOLD:" << endl << epsilon << endl;
   return 0;
 }

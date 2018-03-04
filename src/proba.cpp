@@ -18,11 +18,8 @@ Eigen::MatrixXd   probaDistribution(const Eigen::MatrixXd mat,
     Eigen::MatrixXd cov, Eigen::MatrixXd meanVec){
   Eigen::MatrixXd p = Eigen::MatrixXd::Zero(mat.rows(),1);
 
-  cout << "####### cov" << endl << cov << endl;
-  cout << "####### meanVec" << endl << meanVec << endl;
   for (int i=0;i<mat.rows();i++){
     p(i) = evalMultivNorm(mat.row(i), meanVec, cov);
   }
-  cout << "####### p" << endl << p << endl;
   return p;
 }
