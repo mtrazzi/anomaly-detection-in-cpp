@@ -9,6 +9,7 @@
 #include <numeric>
 #include <tgmath.h>
 #include <Eigen/Core>
+#include <Eigen/LU>
 
 std::vector< std::vector<double> > getMatrix(std::istream& str);
 Eigen::MatrixXd estimate_mean(Eigen::MatrixXd X);
@@ -18,6 +19,6 @@ Eigen::MatrixXd convertVectorToEigen(const std::vector< std::vector <double> > &
 double  evalMultivNorm(const Eigen::MatrixXd &x, const Eigen::MatrixXd &meanVec,
                         const Eigen::MatrixXd & covMat);
 Eigen::MatrixXd   CovarianceMatrix(const Eigen::MatrixXd mat);
-//Eigen::MatrixXd   probaDistribution(const Eigen::MatrixXd mat);
+Eigen::MatrixXd   probaDistribution(const Eigen::MatrixXd mat);
 
 #endif
