@@ -8,11 +8,11 @@ Eigen::MatrixXd estimate_mean(Eigen::MatrixXd X){
 
   for (int i=0;i<m;i++){
     for (int j=0;j<p;j++){
-      mu(j) += X(i,j);
+      mu(j) = mu(j) + X(i,j);
     }
   }
-  for (int j=0;j<m;j++){
-    mu(j) /= m;
+  for (int j=0;j<p;j++){
+    mu(j) = mu(j) / m;
   }
   return mu;
 }
@@ -26,11 +26,11 @@ Eigen::MatrixXd estimate_variance(Eigen::MatrixXd X){
   mu = estimate_mean(X);
   for (int i=0;i<m;i++){
     for (int j=0;j<p;j++){
-      var(j) += pow(X(i,j)-mu(j),2);
+      var(j) = var(j) + pow(X(i,j)-mu(j),2);
     }
   }
   for (int j=0;j<p;j++){
-    var(j) /= m;
+    var(j) = var(j) / m;
   }
   return var;
 }
