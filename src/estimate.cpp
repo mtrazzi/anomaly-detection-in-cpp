@@ -29,7 +29,7 @@ vector<double> estimate_variance(const vector< vector<double > > X) {
       variance[j] += pow(X[i][j]-mu[j],2);
     }
   }
-  for (int j=0;j<m;j++){
+  for (int j=0;j<p;j++){
     variance[j] /= m;
   }
   return variance;
