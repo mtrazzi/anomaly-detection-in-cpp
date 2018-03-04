@@ -12,12 +12,11 @@ int main(int argc, char *argv[]){
   std::vector< std::vector<double> > X;
 
   X = getMatrix(file);
-  //for (auto const& row: X)
-  //  std::cout << row[0] << " " << row[1] << std::endl;
+  for (auto const& row: X)
+    std::cout << row[0] << " " << row[1] << std::endl;
   mu = estimate_mean(X);
   sigma_2 = estimate_variance(X);
   cout << mu[0] << " " << mu[1] << endl;
   cout << sigma_2[0] << " " << sigma_2[1] << endl;
-  Eigen::VectorXd test = Eigen::Map<Eigen::VectorXd, Eigen::Unaligned>(X.data(), X.size());
   return 0;
 }

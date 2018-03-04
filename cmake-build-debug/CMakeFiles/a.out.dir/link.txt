@@ -1,1 +1,0 @@
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  -g -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/a.out.dir/main.cpp.o CMakeFiles/a.out.dir/estimate.cpp.o CMakeFiles/a.out.dir/parser.cpp.o  -o a.out 

@@ -1,7 +1,7 @@
 #include "header.hpp"
 using namespace std;
 
-vector<double> estimate_mean(vector< vector<double > >X){
+vector<double> estimate_mean(const vector< vector<double > >X){
   int p = X[0].size();
   int m = X.size();
   vector<double> mu(p,0);
@@ -17,7 +17,7 @@ vector<double> estimate_mean(vector< vector<double > >X){
   return mu;
 }
 
-vector<double> estimate_variance(vector< vector<double > > X) {
+vector<double> estimate_variance(const vector< vector<double > > X) {
   int p = X[0].size();
   int m = X.size();
   vector<double> mu(p,0);
