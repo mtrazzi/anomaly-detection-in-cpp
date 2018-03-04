@@ -10,6 +10,7 @@
 #include <tgmath.h>
 #include <Eigen/Core>
 #include <Eigen/LU>
+#include <map>
 
 std::vector< std::vector<double> > getMatrix(std::istream& str);
 Eigen::MatrixXd estimate_mean(Eigen::MatrixXd X);
@@ -19,6 +20,10 @@ Eigen::MatrixXd convertVectorToEigen(const std::vector< std::vector <double> > &
 double  evalMultivNorm(const Eigen::VectorXd &x, const Eigen::VectorXd &meanVec,
                         const Eigen::MatrixXd & covMat);
 Eigen::MatrixXd   CovarianceMatrix(const Eigen::MatrixXd mat);
-Eigen::MatrixXd   probaDistribution(const Eigen::MatrixXd mat);
+Eigen::MatrixXd   probaDistribution(const Eigen::MatrixXd mat,
+    Eigen::MatrixXd cov, Eigen::MatrixXd meanVec);
+Eigen::MatrixXd classifyAnomaly(const Eigen::MatrixXd p, double epsilon);
+double  calcF1Score(const Eigen::MatrixXd anomaly,
+                    const Eigen::MatrixXd cross_val);
 
 #endif

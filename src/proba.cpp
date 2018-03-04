@@ -14,10 +14,9 @@ Eigen::MatrixXd   CovarianceMatrix(const Eigen::MatrixXd mat){
   return (centered.adjoint() * centered) / double(mat.rows() - 1); 
 }
 
-Eigen::MatrixXd   probaDistribution(const Eigen::MatrixXd mat){
+Eigen::MatrixXd   probaDistribution(const Eigen::MatrixXd mat,
+    Eigen::MatrixXd cov, Eigen::MatrixXd meanVec){
   Eigen::MatrixXd p = Eigen::MatrixXd::Zero(mat.rows(),1);
-  Eigen::MatrixXd cov = CovarianceMatrix(mat);
-  Eigen::MatrixXd meanVec = estimate_mean(mat);
 
   cout << "####### cov" << endl << cov << endl;
   cout << "####### meanVec" << endl << meanVec << endl;
