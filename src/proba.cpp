@@ -1,17 +1,12 @@
 #include "header.hpp"
 using namespace std;
 
-double  evalMultivNorm(const Eigen::MatrixXd &x, const Eigen::MatrixXd &meanVec,
+double  evalMultivNorm(const Eigen::VectorXd &x, const Eigen::VectorXd &meanVec,
                         const Eigen::MatrixXd & covMat){
   double inv_sqrt_2pi = 1/(sqrt(2*M_PI));
-  //double quadform = (x - meanVec).transpose() * covMat.inverse() * (x - meanVec);
-  cout << "x: " << x.rows() << "," << x.cols() << endl;
-  cout << "meanVec: " << meanVec.rows() << "," << meanVec.cols() << endl;
-  cout << "covMat: " << covMat.rows() << "," << covMat.cols() << endl;
-  double quadform = 0;
-  //double normConst = pow(inv_sqrt_2pi, covMat.rows()) * pow(covMat.determinant(), -.5);
-  //return normConst * exp(-.5*quadform);
-  return 0;
+  double quadform = (x - meanVec).transpose() * covMat.inverse() * (x - meanVec);
+  double normConst = pow(inv_sqrt_2pi, covMat.rows()) * pow(covMat.determinant(), -.5);
+  return normConst * exp(-.5*quadform);
 }
 
 Eigen::MatrixXd   CovarianceMatrix(const Eigen::MatrixXd mat){
@@ -24,8 +19,11 @@ Eigen::MatrixXd   probaDistribution(const Eigen::MatrixXd mat){
   Eigen::MatrixXd cov = CovarianceMatrix(mat);
   Eigen::MatrixXd meanVec = estimate_mean(mat);
 
-  for (int i=0;i<mat.size();i++){
+  cout << "####### cov" << endl << cov << endl;
+  cout << "####### meanVec" << endl << meanVec << endl;
+  for (int i=0;i<mat.rows();i++){
     p(i) = evalMultivNorm(mat.row(i), meanVec, cov);
   }
+  cout << "####### p" << endl << p << endl;
   return p;
 }
